@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../App.css';
 
 const Card = ({ imageStyle, shape }) => (
@@ -8,5 +9,9 @@ const Card = ({ imageStyle, shape }) => (
     </svg>
   </div>
 );
+
+PropTypes.Card = {
+  imageStyle: PropTypes.object.isRequired
+};
 
 export default Card;

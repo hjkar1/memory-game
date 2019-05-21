@@ -1,6 +1,7 @@
 import React from 'react';
-import '../App.css';
+import PropTypes from 'prop-types';
 import Image from './Image';
+import '../App.css';
 
 const Board = ({ cards, clickDisabled, handleClick }) => (
   <div className="board">
@@ -19,5 +20,11 @@ const Board = ({ cards, clickDisabled, handleClick }) => (
     )}
   </div>
 );
+
+PropTypes.Board = {
+  cards: PropTypes.array.isRequired,
+  clickDisabled: PropTypes.bool.isRequired,
+  handleClick: PropTypes.func.isRequired
+};
 
 export default Board;

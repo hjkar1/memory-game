@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import Card from './Card';
 import '../App.css';
 
@@ -86,6 +87,12 @@ const Image = ({ imageName, handleClick, isCardDisabled }) => {
     default:
       return null;
   }
+};
+
+PropTypes.Image = {
+  imageName: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  isCardDisabled: PropTypes.bool.isRequired
 };
 
 export default Image;
