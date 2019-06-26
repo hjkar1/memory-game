@@ -11,7 +11,8 @@ const Card = ({ imageStyle, shape }) => (
 );
 
 PropTypes.Card = {
-  imageStyle: PropTypes.object.isRequired
+  imageStyle: PropTypes.object.isRequired,
+  shape: PropTypes.element.isRequired
 };
 
 export default Card;
