@@ -1,9 +1,6 @@
 import React from 'react';
-import 'jest-dom/extend-expect';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import Controls from './Controls';
-
-afterEach(cleanup);
 
 const mockHandler = jest.fn();
 
