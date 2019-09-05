@@ -7,14 +7,14 @@ const Board = ({ cards, clickDisabled, handleClick }) => (
   <div className="board">
     {cards.map((card, index) =>
       card.match || card.clicked ? (
-        <Image imageName={card.image} key={index} />
+        <Image imageName={card.image} key={card.id} />
       ) : clickDisabled ? (
-        <Image imageName="back" key={index} />
+        <Image imageName="back" key={card.id} />
       ) : (
         <Image
           imageName="back"
           handleClick={() => handleClick(index)}
-          key={index}
+          key={card.id}
         />
       )
     )}
