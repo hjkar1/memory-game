@@ -23,7 +23,6 @@ describe('<Board/>', () => {
   });
 
   test('clicking an image card calls event handler once', async () => {
-    component.debug();
     const card = component.container.querySelector('rect');
     fireEvent.click(card);
 
