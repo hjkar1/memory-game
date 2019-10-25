@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import Board from './Board';
 import { initializeCards } from '../initialize';
 import images from '../images';
