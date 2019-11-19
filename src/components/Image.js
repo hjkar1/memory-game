@@ -4,20 +4,15 @@ import Card from './Card';
 import '../App.css';
 
 const Image = ({ imageName, handleClick, isCardDisabled }) => {
+  const clickHandler = isCardDisabled ? null : handleClick;
+  const cursorStyle = isCardDisabled ? 'auto' : 'pointer';
   switch (imageName) {
     case 'back':
       return (
         <Card
-          imageStyle={{ fill: '#00ced1' }}
+          imageStyle={{ fill: '#00ced1', cursor: cursorStyle }}
           shape={
-            <rect
-              x="0"
-              y="0"
-              width="100"
-              height="100"
-              onClick={handleClick}
-              disabled={isCardDisabled}
-            />
+            <rect x="0" y="0" width="100" height="100" onClick={clickHandler} />
           }
         />
       );
