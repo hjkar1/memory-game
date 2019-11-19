@@ -1,10 +1,18 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import Card from './Card';
 import '../App.css';
 
-const Image = ({ imageName, handleClick, isCardDisabled }) => {
-  const clickHandler = isCardDisabled ? null : handleClick;
+interface Props {
+  imageName: string;
+  handleClick?: () => void;
+  isCardDisabled?: boolean;
+}
+
+const Image = ({ imageName, handleClick, isCardDisabled }: Props) => {
+  let clickHandler;
+  if (!isCardDisabled) {
+    clickHandler = handleClick;
+  }
   const cursorStyle = isCardDisabled ? 'auto' : 'pointer';
   switch (imageName) {
     case 'back':
@@ -12,7 +20,14 @@ const Image = ({ imageName, handleClick, isCardDisabled }) => {
         <Card
           imageStyle={{ fill: '#00ced1', cursor: cursorStyle }}
           shape={
-            <rect x="0" y="0" width="100" height="100" onClick={clickHandler} />
+            <rect
+              x="0"
+              y="0"
+              width="100"
+              height="100"
+              data-testid="rect"
+              onClick={clickHandler}
+            />
           }
         />
       );
@@ -82,12 +97,6 @@ const Image = ({ imageName, handleClick, isCardDisabled }) => {
     default:
       return null;
   }
-};
-
-PropTypes.Image = {
-  imageName: PropTypes.string.isRequired,
-  handleClick: PropTypes.func.isRequired,
-  isCardDisabled: PropTypes.bool.isRequired
 };
 
 export default Image;

@@ -5,14 +5,14 @@ import { initializeCards } from './initialize';
 import images from './images';
 import './App.css';
 
-const App = () => {
+const App: React.FC = () => {
   const [cards, setCards] = useState(initializeCards(images));
   const [previousIndex, setPreviousIndex] = useState(-1);
   const [clickDisabled, setClickDisabled] = useState(false);
   const [timesTried, setTimesTried] = useState(0);
   const [finished, setFinished] = useState(false);
 
-  const handleClick = index => {
+  const handleClick = (index: number) => {
     const updatedCards = [...cards];
     updatedCards[index].clicked = true;
 

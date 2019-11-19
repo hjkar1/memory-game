@@ -10,22 +10,20 @@ const cards = initializeCards(images);
 const mockHandler = jest.fn();
 
 describe('<Board/>', () => {
-  let component;
-
-  beforeEach(() => {
-    component = render(
+  test('renders the image cards', () => {
+    const { getAllByTestId } = render(
       <Board cards={cards} clickDisabled={false} handleClick={mockHandler} />
     );
-  });
-
-  test('renders the image cards', () => {
-    const images = component.container.querySelectorAll('.card');
+    const images = getAllByTestId('card');
     expect(images.length).toBe(16);
   });
 
   test('clicking an image card calls event handler once', async () => {
-    const card = component.container.querySelector('rect');
-    fireEvent.click(card);
+    const { getAllByTestId } = render(
+      <Board cards={cards} clickDisabled={false} handleClick={mockHandler} />
+    );
+    const rects = getAllByTestId('rect');
+    fireEvent.click(rects[0]);
 
     expect(mockHandler.mock.calls.length).toBe(1);
   });

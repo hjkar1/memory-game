@@ -1,9 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Image from './Image';
+import CardData from '../models/CardData';
 import '../App.css';
 
-const Board = ({ cards, clickDisabled, handleClick }) => (
+interface Props {
+  cards: Array<CardData>;
+  clickDisabled: boolean;
+  handleClick: (index: number) => void;
+}
+
+const Board: React.FunctionComponent<Props> = ({
+  cards,
+  clickDisabled,
+  handleClick
+}: Props) => (
   <div className="board">
     {cards.map((card, index) =>
       card.match || card.clicked ? (
@@ -20,11 +30,5 @@ const Board = ({ cards, clickDisabled, handleClick }) => (
     )}
   </div>
 );
-
-PropTypes.Board = {
-  cards: PropTypes.array.isRequired,
-  clickDisabled: PropTypes.bool.isRequired,
-  handleClick: PropTypes.func.isRequired
-};
 
 export default Board;

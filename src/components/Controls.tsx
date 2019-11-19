@@ -1,8 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import '../App.css';
 
-const Controls = ({ finished, timesTried, clickDisabled, startNew }) => {
+interface Props {
+  finished: boolean;
+  timesTried: number;
+  clickDisabled: boolean;
+  startNew: () => void;
+}
+
+const Controls: React.FunctionComponent<Props> = ({
+  finished,
+  timesTried,
+  clickDisabled,
+  startNew
+}: Props) => {
   return (
     <div className="controls">
       <p className="tries">Number of tries: {timesTried}</p>
@@ -22,13 +33,6 @@ const Controls = ({ finished, timesTried, clickDisabled, startNew }) => {
       )}
     </div>
   );
-};
-
-PropTypes.Controls = {
-  finished: PropTypes.bool.isRequired,
-  timesTried: PropTypes.number.isRequired,
-  clickDisabled: PropTypes.bool.isRequired,
-  startNew: PropTypes.func.isRequired
 };
 
 export default Controls;

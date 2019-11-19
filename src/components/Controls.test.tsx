@@ -7,7 +7,7 @@ const mockHandler = jest.fn();
 
 describe('<Controls/>', () => {
   test('renders the times tried', () => {
-    const component = render(
+    const { getByText } = render(
       <Controls
         finished={false}
         timesTried={10}
@@ -15,11 +15,13 @@ describe('<Controls/>', () => {
         startNew={mockHandler}
       />
     );
-    expect(component.container).toHaveTextContent('Number of tries: 10');
+
+    const element = getByText('Number of tries: 10');
+    expect(element).toBeDefined();
   });
 
   test('renders the finish message', () => {
-    const component = render(
+    const { getByText } = render(
       <Controls
         finished={true}
         timesTried={0}
@@ -27,13 +29,12 @@ describe('<Controls/>', () => {
         startNew={mockHandler}
       />
     );
-    expect(component.container).toHaveTextContent(
-      'You found all pairs. Congratulations!'
-    );
+    const element = getByText('You found all pairs. Congratulations!');
+    expect(element).toBeDefined();
   });
 
   test('does not render the finish message if not finished', () => {
-    const component = render(
+    const { queryByText } = render(
       <Controls
         finished={false}
         timesTried={0}
@@ -41,9 +42,9 @@ describe('<Controls/>', () => {
         startNew={mockHandler}
       />
     );
-    expect(component.container).not.toHaveTextContent(
-      'You found all pairs. Congratulations!'
-    );
+
+    const element = queryByText('You found all pairs. Congratulations!');
+    expect(element).toBeNull();
   });
 
   test('clicking the button calls event handler once', async () => {
